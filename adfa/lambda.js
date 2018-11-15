@@ -2,6 +2,7 @@ let AWS = require('aws-sdk');
 const ddb = new AWS.DynamoDB.DocumentClient();
 
 exports.handler = function (event, context, callback) {
+
     console.log("Received request with payload", event);
     let operation = event.Operation;
     let id = event.ID;
@@ -29,7 +30,7 @@ exports.handler = function (event, context, callback) {
     event.Result = result;
 
     ddb.put({
-        TableName: 'Cal',
+        TableName: 'Cal1',
         Item: { 
             'ID': id, 'Result': result, 'Operation': operation 
             }
